@@ -30,7 +30,7 @@ const getImgByIdHandler = (req, res) => {
     }
     const { fileName } = image;
 
-    const imagePath = path.join(__dirname, 'images', fileName);
+    const imagePath = path.join(__dirname, 'assets', fileName);
 
     return res.sendFile(imagePath);
 };
@@ -44,7 +44,7 @@ const getThumbByIdHandler = (request, res) => {
 
         if (thumbnailImg) {
             const { fileName } = thumbnailImg;
-            const imagePath = path.join(__dirname, 'images', fileName);
+            const imagePath = path.join(__dirname, 'assets', fileName);
 
             return res.sendFile(imagePath);
         }
@@ -57,7 +57,7 @@ const getThumbByIdHandler = (request, res) => {
 
 const getAllBooks = () => {
     try {
-        const jsonData = fs.readFileSync(path.join(__dirname, 'images/data', 'DATA.json'));
+        const jsonData = fs.readFileSync(path.join(__dirname, 'assets/data', 'DATA.json'));
         const data = JSON.parse(jsonData);
         return data;
     } catch (error) {
