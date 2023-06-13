@@ -107,7 +107,7 @@ const addingRev = async (req, res) => {
     const date = `${day} ${month} ${year}`;
     const query = `
         INSERT INTO review (id_review, id_story, nama, tanggal, isi_review)
-        VALUES ($1, $2, $3, $4, $5) RETURNING id_review
+        VALUES ($1, $2, $3, $4, $5) RETURNING id_review, id_story, nama, tanggal, isi_review
     `;
     const values = [id_review, id, name, date, review];
     const { rows } = await pool.query(query, values);
