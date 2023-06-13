@@ -55,11 +55,11 @@ const getThumbByIdHandler = (request, res) => {
     }
 };
 
-const getAllBooks = (req, res) => {
+const getAllBooks = () => {
     try {
         const jsonData = fs.readFileSync('data/DATA.json', 'utf8');
         const data = JSON.parse(jsonData);
-        return res.send(data);
+        return data;
     } catch (error) {
         console.error('Error reading JSON file:', error);
         return res.send('Error');

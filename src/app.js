@@ -15,7 +15,10 @@ app.get("/", (req, res) => {
     res.send("Smiling API");
 });
 
-app.get("/list", getAllBooks);
+app.get("/list", (req, res) => {
+    const result = getAllBooks();
+    res.send(result);
+});
 app.get("/images/:idS/:id", getImgByIdHandler);
 app.get("/thumbnail/:id", getThumbByIdHandler);
 app.get("/getreview/:id", getReviewById);
