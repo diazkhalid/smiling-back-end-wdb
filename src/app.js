@@ -1,7 +1,5 @@
 import Express from "express";
 import cors from "cors";
-import fs from 'fs';
-import multer from "multer";
 import path from 'path';
 import { fileURLToPath } from 'url';
 import { dirname } from 'path';
