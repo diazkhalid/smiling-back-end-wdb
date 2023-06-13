@@ -57,7 +57,7 @@ const getThumbByIdHandler = (request, res) => {
 
 const getAllBooks = () => {
     try {
-        const jsonData = fs.readFileSync('data/DATA.json', 'utf8');
+        const jsonData = fs.readFileSync(path.join(__dirname, 'images/data', 'DATA.json'));
         const data = JSON.parse(jsonData);
         return data;
     } catch (error) {
