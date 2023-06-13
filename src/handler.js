@@ -20,7 +20,7 @@ const pool = new Pool({
 const getImgByIdHandler = (req, res) => {
     const { idS, id } = req.params;
     const idStory = parseInt(idS);
-    const data = fs.readFileSync('data/DATA-IMG.json', 'utf8');
+    const data = fs.readFileSync(path.join(__dirname, 'assets/data', 'DATA-IMG.json'));
     const jsonData = JSON.parse(data);
     const imageData = jsonData.picture.find((story) => story.idStory === idStory);
     const image = imageData.fileImg.find((img) => img.id === id);
@@ -38,7 +38,7 @@ const getImgByIdHandler = (req, res) => {
 const getThumbByIdHandler = (request, res) => {
     try {
         const imageId = parseInt(request.params.id);
-        const data = fs.readFileSync('data/DATA-IMG.json', 'utf8');
+        const data = fs.readFileSync(path.join(__dirname, 'assets/data', 'DATA-IMG.json'));
         const jsonData = JSON.parse(data);
         const thumbnailImg = jsonData.thumbnail.find((thumb) => thumb.id === imageId);
 
@@ -69,7 +69,7 @@ const getAllBooks = () => {
 const getBookByIdHandler = (req, res) => {
     try {
         const { id } = req.params;
-        const data = fs.readFileSync('data/DATA.json', 'utf8');
+        const data = fs.readFileSync(path.join(__dirname, 'assets/data', 'DATA.json'));
         const jsonData = JSON.parse(data);
         const story = jsonData.stories.find((story) => story.id === id);
 
@@ -85,7 +85,7 @@ const getBookByIdHandler = (req, res) => {
 
 const searchStoryHandler = async (req, res) => {
     const { title } = req.query;
-    const data = fs.readFileSync('data/DATA.json', 'utf8');
+    const data = fs.readFileSync(path.join(__dirname, 'assets/data', 'DATA.json'));
     const jsonData = JSON.parse(data);
     const result = jsonData.stories.filter((story) => story.title.toLowerCase().replace(/\s/g, '').includes(title.toLowerCase().replace(/\s/g, '')));
 
